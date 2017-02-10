@@ -1,94 +1,84 @@
 <html>
-<head>
-<title>Hello Git</title>
-</head>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular-animate.js"></script>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  
-<script>
-var app = angular.module("first",[]);
-app.controller("firstCtrl", function($scope){
-$scope.msg="Angular js is working ";
-$scope.notesData=[{"note":"John"},{"note":"Doe"}];
-
-$scope.popNote = function (indexValue){
-alert(indexValue);
-
-$scope.notesData.splice(indexValue,1);
-};
-
-$scope.pushNote = function(noteValue){
-
-if(noteValue==''||noteValue==undefined){
-alert('Please enter note to add ');
-} else {
-
-if($scope.notesData.some(function(o) {return o["note"]===noteValue;})==true){
-alert('Note already exists');
-} else {
-var note={"note":noteValue};
-//$scope.checkDuplicate(noteValue);
-$scope.notesData.push(note);
-$scope.addNote='';
-}
-
-}
-
-};
-
-$scope.checkDuplicate = function(vale){
-//alert($scope.notesData.indexOf(vale));
-alert($scope.notesData.some(function(o) {return o["note"]===vale;}));
-return;
-}
-
-}
-)
-
-</script>
-<style>
-table,td,tr,th{
-border:2px solid black;
-text-align:center;
-
-
-th{
-color:green;
-}
-</style>
-<body ng-app="first">
-<div ng-controller="firstCtrl" align="center">
-
-
-{{msg}}
-
-<br><br>
-
-<table ng-hide="!notesData.length">
-<th>S.No</th>
-<th>Note</th>
-<th>Actions</th>
-<tr ng-repeat="x in notesData">
-<td>{{$index+1}}</td>
-<td>{{x.note}}</td>
-<td><button name="nd" value="Delete Note" ng-click="popNote($index)">Delete Note</button></td>
-<tr>
-<td></td>
-<td><textarea ng-model="addNote"></textarea></td>
-<td><input type="button"  value="Add New Note" ng-click="pushNote(addNote)" ng-disabled="!addNote"></input></td>
-</tr>
-</tr>
-
-</table>
-
-<div ng-hide="notesData.length">There are no more Notes available, please click on add note for adding a new note<br><textarea ng-model="addNote"></textarea>
-<input type="button"  value="Add New Note" ng-click="pushNote(addNote)" ng-disabled="!addNote"></input> </div>
-<br/><br/>
-
-
-</div>
-</body>
+   <head>
+      <title>Hello Git</title>
+   </head>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular-animate.js"></script>
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+   <script>
+      var app = angular.module("first",[]);
+      app.controller("firstCtrl", function($scope){
+      $scope.msg="Angular js is working ";
+      $scope.notesData=[{"note":"John"},{"note":"Doe"}];
+      
+      $scope.popNote = function (indexValue){
+      alert(indexValue);
+      
+      $scope.notesData.splice(indexValue,1);
+      };
+      
+      $scope.pushNote = function(noteValue){
+      
+      if(noteValue==''||noteValue==undefined){
+      alert('Please enter note to add ');
+      } else {
+      
+      if($scope.notesData.some(function(o) {return o["note"]===noteValue;})==true){
+      alert('Note already exists');
+      } else {
+      var note={"note":noteValue};
+      //$scope.checkDuplicate(noteValue);
+      $scope.notesData.push(note);
+      $scope.addNote='';
+      }
+      
+      }
+      
+      };
+      
+      $scope.checkDuplicate = function(vale){
+      //alert($scope.notesData.indexOf(vale));
+      alert($scope.notesData.some(function(o) {return o["note"]===vale;}));
+      return;
+      }
+      
+      }
+      )
+      
+   </script>
+   <style>
+      table,td,tr,th{
+      border:2px solid black;
+      text-align:center;
+      th{
+      color:green;
+      }
+   </style>
+   <body ng-app="first">
+      <div ng-controller="firstCtrl" align="center">
+         {{msg}}
+         <br><br>
+         <table ng-hide="!notesData.length">
+            <th>S.No</th>
+            <th>Note</th>
+            <th>Actions</th>
+            <tr ng-repeat="x in notesData">
+               <td>{{$index+1}}</td>
+               <td>{{x.note}}</td>
+               <td><button name="nd" value="Delete Note" ng-click="popNote($index)">Delete Note</button></td>
+            <tr>
+               <td></td>
+               <td><textarea ng-model="addNote"></textarea></td>
+               <td><input type="button"  value="Add New Note" ng-click="pushNote(addNote)" ng-disabled="!addNote"></input></td>
+            </tr>
+            </tr>
+         </table>
+         <div ng-hide="notesData.length">There are no more Notes available, please click on add note for adding a new note<br><textarea ng-model="addNote"></textarea>
+            <input type="button"  value="Add New Note" ng-click="pushNote(addNote)" ng-disabled="!addNote"></input> 
+         </div>
+         <br/><br/>
+      </div>
+   </body>
 </html>
